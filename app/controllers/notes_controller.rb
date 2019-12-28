@@ -10,7 +10,10 @@ class NotesController < ApplicationController
     end
 
     def create
+        # note = Note.create(title: note_params[:title], content: note_params[:content], user_id: note_params[:user_id])
         note = Note.create(note_params)
+
+        # note_params[:tagIds].each(id => note.tags << Tag.find(id))
         note.save
         render json: note
     end
