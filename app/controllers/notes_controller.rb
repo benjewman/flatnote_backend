@@ -15,10 +15,12 @@ class NotesController < ApplicationController
         render json: note
     end
 
-    # def update
-    #     note = Note.find(params[:id])
-
-    # end
+    def update
+        note = Note.find(params[:id])
+        note.update(note_params)
+        note.save
+        render json: note
+    end
 
     def destroy
         note = Note.find(params[:id])
