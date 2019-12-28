@@ -10,7 +10,7 @@ class NotesController < ApplicationController
     end
 
     def create
-        note = Note.new(note_params)
+        note = Note.create(note_params)
         note.save
         render json: note
     end
@@ -22,7 +22,7 @@ class NotesController < ApplicationController
 
     private
         def note_params
-            params.require(:note).permit(:title, :content)
+            params.require(:note).permit(:title, :content, :user_id)
         end
     
 end
