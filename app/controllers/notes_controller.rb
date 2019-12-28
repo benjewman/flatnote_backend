@@ -20,6 +20,12 @@ class NotesController < ApplicationController
 
     # end
 
+    def destroy
+        note = Note.find(params[:id])
+        note.destroy
+        render json: {message: 'successful delete'}
+    end
+
     private
         def note_params
             params.require(:note).permit(:title, :content, :user_id)

@@ -21,12 +21,26 @@ Bundler.require(*Rails.groups)
 
 module PostgresBackend
   class Application < Rails::Application
-    config.middleware.insert_before 0, Rack::Cors do
+    # config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource '*', headers: :any, methods: [:get, :post, :options, :delete, :put]
+    #   end
+    # end
+
+    config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        resource '*', 
+            :headers => :any, 
+            :methods => [:get, :post, :delete, :put, :options]
       end
     end
+
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Origin' => *,
+      'Access-Control-Request-Method' => %w{GET POST OPTIONS DELETE}.join(",")
+    }
     
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
