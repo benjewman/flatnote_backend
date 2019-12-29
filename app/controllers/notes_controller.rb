@@ -21,6 +21,8 @@ class NotesController < ApplicationController
     def update
         note = Note.find(params[:id])
         note.update(note_params)
+        # empty note tags
+        note.tags.clear
         note.save
         render json: note
     end

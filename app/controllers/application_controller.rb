@@ -1,8 +1,4 @@
 class ApplicationController < ActionController::API
-
-    protect_from_forgery
-    before_filter :current_user, :cors_preflight_check
-    after_filter :cors_set_access_control_headers
     
     # For all responses in this controller, return the CORS access control headers.
     
@@ -31,5 +27,4 @@ class ApplicationController < ActionController::API
     def current_user
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
-    helper_method :current_user
 end
