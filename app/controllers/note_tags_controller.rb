@@ -6,6 +6,9 @@ class NoteTagsController < ApplicationController
     end
 
     def destroy
+        note_tag = NoteTag.find(params[:id])
+        note_tag.destroy
+        render json: {message: 'deleted successfully'}
     end
 
     private

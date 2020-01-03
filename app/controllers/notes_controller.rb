@@ -6,7 +6,7 @@ class NotesController < ApplicationController
 
     def show
         note = Note.find(params[:id])
-        render json: note, include: [:tags]
+        render json: note, include: [:tags, :note_tags]
     end
 
     def create
@@ -22,7 +22,6 @@ class NotesController < ApplicationController
         note = Note.find(params[:id])
         note.update(note_params)
         # empty note tags
-        note.tags.clear
         note.save
         render json: note
     end
@@ -33,6 +32,11 @@ class NotesController < ApplicationController
         render json: {message: 'successful delete'}
     end
 
+    # def destroy
+    #     puts 'sfdsdfsf99999999999sddf'
+    #     render json: {foo: 'bar'}
+    # end
+    
     private
         def note_params
             params.require(:note).permit(:title, :content, :user_id)

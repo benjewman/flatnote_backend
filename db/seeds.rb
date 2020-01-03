@@ -1,38 +1,32 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-require 'database_cleaner'
 
-DatabaseCleaner.clean_with(:truncation)
+# require 'database_cleaner'
 
-one = Tag.create(name: 'Personal')
-two = Tag.create(name: 'Work')
-three = Tag.create(name: 'Schoolwork')
-four = Tag.create(name: 'Creative')
-Tag.create(name: 'Education')
-Tag.create(name: 'Motivation')
-Tag.create(name: 'Health')
-Tag.create(name: 'Relationships')
+# DatabaseCleaner.clean_with(:truncation)
 
-u = User.create(username: 'ben')
-uu = User.create(username: 'garfield')
+# one = Tag.create(name: 'Personal')
+# two = Tag.create(name: 'Work')
+# three = Tag.create(name: 'Schoolwork')
+# four = Tag.create(name: 'Creative')
+# Tag.create(name: 'Education')
+# Tag.create(name: 'Motivation')
+# Tag.create(name: 'Health')
+# Tag.create(name: 'Relationships')
 
-n = Note.create(content: 'whats the deal with notes', title: 'captivating title')
-nn = Note.create(content: 'this is a second note', title: 'great title')
+# u = User.create(username: 'ben')
+# uu = User.create(username: 'garfield')
 
-n.user = u 
-nn.user = u
+# n = Note.create(content: 'whats the deal with notes', title: 'captivating title')
+# nn = Note.create(content: 'this is a second note', title: 'great title')
 
-n.tags << one
-n.tags << two
-n.tags << three
-nn.tags << two 
-nn.tags << three 
-nn.tags << four
+# n.user = u 
+# nn.user = u
 
-n.save
-nn.save
+# n.tags << one
+# n.tags << two
+# n.tags << three
+# nn.tags << two 
+# nn.tags << three 
+# nn.tags << four
+
+# n.save
+# nn.save

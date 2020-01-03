@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tags, only: [:index]
-  resources :notes, except: [:new, :edit]
+  resources :notes
   resources :users, only: [:index, :show, :create]
   resources :note_tags, only: [:create, :destroy]
 
